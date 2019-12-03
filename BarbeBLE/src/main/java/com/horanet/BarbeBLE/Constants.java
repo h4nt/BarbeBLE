@@ -1,7 +1,13 @@
-package com.horanet.BarbeBLE;
+package itan.com.bluetoothle;
+
+import android.bluetooth.BluetoothGattCharacteristic;
+import android.os.ParcelUuid;
 
 import java.util.UUID;
 
+/**
+ * Created by itanbarpeled on 28/01/2018.
+ */
 
 public class Constants {
 

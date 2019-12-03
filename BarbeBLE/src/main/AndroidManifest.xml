@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.horanet.BarbeBLE">
+    package="itan.com.bluetoothle">
 
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
@@ -20,21 +20,29 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="com.horanet.BarbeBLE.MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name="com.horanet.BarbeBLE.PeripheralRoleActivity" />
+        <activity android:name=".PeripheralRoleActivity" />
+
+        <activity android:name=".CentralRoleActivity" />
+
+        <activity android:name=".DeviceConnectActivity" />
 
         <!--
         Service to handle BLE Advertising - Using a service allows advertising to continue
         when the app is no longer on screen in a reliable manner.
         -->
         <service
-            android:name="com.horanet.BarbeBLE.PeripheralAdvertiseService"
+            android:name=".PeripheralAdvertiseService"
+            android:enabled="true"
+            android:exported="false"/>
+
+        <service android:name=".CentralService"
             android:enabled="true"
             android:exported="false"/>
 

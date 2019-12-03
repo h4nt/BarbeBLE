@@ -1,4 +1,4 @@
-package com.horanet.BarbeBLE;
+package itan.com.bluetoothle;
 
 import android.app.Service;
 import android.bluetooth.BluetoothAdapter;

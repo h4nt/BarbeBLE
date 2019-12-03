@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.horanet.barbeble.PeripheralRoleActivity"
+    tools:context="itan.com.bluetoothle.PeripheralRoleActivity"
     android:orientation="vertical"
     android:gravity="center_horizontal">
 
@@ -45,14 +45,14 @@
             android:id="@+id/color_option_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableEnd="@android:color/black"
+            android:drawableEnd="@drawable/color_option_1"
             android:checked="true"/>
 
         <RadioButton
             android:id="@+id/color_option_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableEnd="@android:color/white"/>*.
+            android:drawableEnd="@drawable/color_option_2"/>
 
     </RadioGroup>
 
