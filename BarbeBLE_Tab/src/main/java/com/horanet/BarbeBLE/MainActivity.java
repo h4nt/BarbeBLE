@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private Button mPeripheralButton;
-    private Button mCentralButton;
 
     private BluetoothAdapter mBluetoothAdapter;
 
@@ -35,10 +34,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         mPeripheralButton = (Button) findViewById(R.id.button_role_peripheral);
-        mCentralButton = (Button) findViewById(R.id.button_role_central);
 
         mPeripheralButton.setOnClickListener(this);
-        mCentralButton.setOnClickListener(this);
 
         if (savedInstanceState == null) {
             initBT();
@@ -106,29 +103,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (mBluetoothAdapter.isEnabled()) {
 
                     // Are Bluetooth Advertisements supported on this device?
-                    if (mBluetoothAdapter.isMultipleAdvertisementSupported()) {
+                    if (!mBluetoothAdapter.isMultipleAdvertisementSupported()) {
+                        showErrorText(R.string.bt_ads_not_supported);
+                    }
 
-                        // see https://stackoverflow.com/a/37015725/1869297
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    // see https://stackoverflow.com/a/37015725/1869297
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
-                            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                                requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, PERMISSION_REQUEST_COARSE_LOCATION);
-                            } else {
-                                // Everything is supported and enabled.
-                                enableNavigation();
-                            }
-
+                        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                            requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, PERMISSION_REQUEST_COARSE_LOCATION);
                         } else {
                             // Everything is supported and enabled.
                             enableNavigation();
                         }
 
-
                     } else {
-
-                        // Bluetooth Advertisements are not supported.
-                        showErrorText(R.string.bt_ads_not_supported);
+                        // Everything is supported and enabled.
+                        enableNavigation();
                     }
+
                 } else {
 
                     // Prompt user to turn on Bluetooth (logic continues in onActivityResult()).
@@ -156,10 +149,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent = new Intent(this, PeripheralRoleActivity.class);
                 break;
 
-            case R.id.button_role_central:
-                intent = new Intent(this, CentralRoleActivity.class);
-                break;
-
         }
 
         if (intent != null) {
@@ -170,7 +159,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void enableNavigation() {
         mPeripheralButton.setEnabled(true);
-        mCentralButton.setEnabled(true);
     }
 
 

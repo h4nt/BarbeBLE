@@ -26,15 +26,6 @@ import static com.horanet.BarbeBLE.Constants.SERVER_MSG_FIRST_STATE;
 import static com.horanet.BarbeBLE.Constants.SERVER_MSG_SECOND_STATE;
 
 
-/**
- This activity represents the Peripheral/Server role.
- Bluetooth communication flow:
-    1. advertise [peripheral]
-    2. scan [central]
-    3. connect [central]
-    4. notify [peripheral]
-    5. receive [central]
- */
 public class PeripheralRoleActivity extends BluetoothActivity implements View.OnClickListener {
 
     private BluetoothGattService mSampleService;
@@ -107,18 +98,13 @@ public class PeripheralRoleActivity extends BluetoothActivity implements View.On
     }
 
 
-    /**
-     * Starts BLE Advertising by starting {@code PeripheralAdvertiseService}.
-     */
+    //Starts BLE Advertising by starting
     private void startAdvertising() {
-        // TODO bluetooth - maybe bindService? what happens when closing app?
         startService(getServiceIntent(this));
     }
 
 
-    /**
-     * Stops BLE Advertising by stopping {@code PeripheralAdvertiseService}.
-     */
+    //Stops BLE Advertising by stopping
     private void stopAdvertising() {
         stopService(getServiceIntent(this));
         mEnableAdvertisementSwitch.setChecked(false);
@@ -163,19 +149,7 @@ public class PeripheralRoleActivity extends BluetoothActivity implements View.On
         setCharacteristic(R.id.color_option_1);
     }
 
-    /*
-    update the value of Characteristic.
-    the client will receive the Characteristic value when:
-        1. the Client user clicks the "Request Characteristic" button
-        2. teh Server user clicks the "Notify Client" button
-
-    value - can be between 0-255 according to:
-    https://www.bluetooth.com/specifications/gatt/viewer?attributeXmlFile=org.bluetooth.characteristic.body_sensor_location.xml
-     */
     private void setCharacteristic(int checkedId) {
-        /*
-        done each time the user changes a value of a Characteristic
-         */
         int value = checkedId == R.id.color_option_1 ? SERVER_MSG_FIRST_STATE : SERVER_MSG_SECOND_STATE;
         mSampleCharacteristic.setValue(getValue(value));
     }
@@ -202,9 +176,7 @@ public class PeripheralRoleActivity extends BluetoothActivity implements View.On
         }
     }
 
-    /**
-     * Returns Intent addressed to the {@code PeripheralAdvertiseService} class.
-     */
+
     private Intent getServiceIntent(Context context) {
         return new Intent(context, PeripheralAdvertiseService.class);
     }
@@ -311,45 +283,6 @@ public class PeripheralRoleActivity extends BluetoothActivity implements View.On
             super.onDescriptorWriteRequest(device, requestId, descriptor, preparedWrite, responseNeeded, offset, value);
 
             Log.v(MainActivity.TAG, "Descriptor Write Request " + descriptor.getUuid() + " " + Arrays.toString(value));
-
-//            int status = BluetoothGatt.GATT_SUCCESS;
-//            if (descriptor.getUuid() == CLIENT_CHARACTERISTIC_CONFIGURATION_UUID) {
-//                BluetoothGattCharacteristic characteristic = descriptor.getCharacteristic();
-//                boolean supportsNotifications = (characteristic.getProperties() &
-//                        BluetoothGattCharacteristic.PROPERTY_NOTIFY) != 0;
-//                boolean supportsIndications = (characteristic.getProperties() &
-//                        BluetoothGattCharacteristic.PROPERTY_INDICATE) != 0;
-//
-//                if (!(supportsNotifications || supportsIndications)) {
-//                    status = BluetoothGatt.GATT_REQUEST_NOT_SUPPORTED;
-//                } else if (value.length != 2) {
-//                    status = BluetoothGatt.GATT_INVALID_ATTRIBUTE_LENGTH;
-//                } else if (Arrays.equals(value, BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)) {
-//                    status = BluetoothGatt.GATT_SUCCESS;
-//                    mCurrentServiceFragment.notificationsDisabled(characteristic);
-//                    descriptor.setValue(value);
-//                } else if (supportsNotifications &&
-//                        Arrays.equals(value, BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE)) {
-//                    status = BluetoothGatt.GATT_SUCCESS;
-//                    mCurrentServiceFragment.notificationsEnabled(characteristic, false /* indicate */);
-//                    descriptor.setValue(value);
-//                } else if (supportsIndications &&
-//                        Arrays.equals(value, BluetoothGattDescriptor.ENABLE_INDICATION_VALUE)) {
-//                    status = BluetoothGatt.GATT_SUCCESS;
-//                    mCurrentServiceFragment.notificationsEnabled(characteristic, true /* indicate */);
-//                    descriptor.setValue(value);
-//                } else {
-//                    status = BluetoothGatt.GATT_REQUEST_NOT_SUPPORTED;
-//                }
-//            } else {
-//                status = BluetoothGatt.GATT_SUCCESS;
-//                descriptor.setValue(value);
-//            }
-//            if (responseNeeded) {
-//                mGattServer.sendResponse(device, requestId, status,
-//            /* No need to respond with offset */ 0,
-//            /* No need to respond with a value */ null);
-//            }
 
         }
     };

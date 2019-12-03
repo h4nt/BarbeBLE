@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BarbeBLE/BarbeBLE.iml" filepath="$PROJECT_DIR$/BarbeBLE/BarbeBLE.iml" />
-      <module fileurl="file://$PROJECT_DIR$/BarbleBLE.iml" filepath="$PROJECT_DIR$/BarbleBLE.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BarbeBLE_Tab/BarbeBLE_Tab.iml" filepath="$PROJECT_DIR$/BarbeBLE_Tab/BarbeBLE_Tab.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BarbleBLE_Tab.iml" filepath="$PROJECT_DIR$/BarbleBLE_Tab.iml" />
     </modules>
   </component>
 </project>
