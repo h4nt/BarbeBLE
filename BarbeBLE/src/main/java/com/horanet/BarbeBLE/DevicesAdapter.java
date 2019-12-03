@@ -11,11 +11,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.horanet.BarbeBLE.R;
-
-/**
- * Created by itanbarpeled on 28/01/2018.
- */
 
 public class DevicesAdapter extends RecyclerView.Adapter<DevicesAdapter.ViewHolder>  {
 
@@ -23,18 +18,6 @@ public class DevicesAdapter extends RecyclerView.Adapter<DevicesAdapter.ViewHold
     public interface DevicesAdapterListener {
         void onDeviceItemClick(String deviceName, String deviceAddress);
     }
-
-    /*
-    class Temp {
-        String name;
-        String address;
-
-        public Temp(String name, String address) {
-            this.name = name;
-            this.address = address;
-        }
-    }
-    */
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -58,14 +41,6 @@ public class DevicesAdapter extends RecyclerView.Adapter<DevicesAdapter.ViewHold
     public DevicesAdapter(DevicesAdapterListener listener) {
         mArrayList = new ArrayList<>();
         mListener = listener;
-
-        /*
-        Temp device = new Temp("Pixel", "AA:12:AA:12:AA:12");
-        mArrayList.add(device);
-        device = new Temp("Galaxy S8", "BB:23:BB:23:BB:23");
-        mArrayList.add(device);
-        notifyDataSetChanged();
-        */
     }
 
     public DevicesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -80,11 +55,6 @@ public class DevicesAdapter extends RecyclerView.Adapter<DevicesAdapter.ViewHold
         final String deviceName = scanResult.getDevice().getName();
         final String deviceAddress = scanResult.getDevice().getAddress();
 
-        /*
-        Temp scanResult = mArrayList.get(position);
-        final String deviceName = scanResult.name;
-        final String deviceAddress = scanResult.address;
-        */
 
         if (TextUtils.isEmpty(deviceName)) {
             holder.mDeviceNameView.setText("");
@@ -119,10 +89,7 @@ public class DevicesAdapter extends RecyclerView.Adapter<DevicesAdapter.ViewHold
         add(scanResult, true);
     }
 
-    /**
-     * Add a ScanResult item to the adapter if a result from that device isn't already present.
-     * Otherwise updates the existing position with the new ScanResult.
-     */
+
     public void add(ScanResult scanResult, boolean notify) {
 
         if (scanResult == null) {
@@ -154,10 +121,6 @@ public class DevicesAdapter extends RecyclerView.Adapter<DevicesAdapter.ViewHold
         }
     }
 
-
-    /**
-     * Search the adapter for an existing device address and return it, otherwise return -1.
-     */
     private int getPosition(String address) {
         int position = -1;
         for (int i = 0; i < mArrayList.size(); i++) {

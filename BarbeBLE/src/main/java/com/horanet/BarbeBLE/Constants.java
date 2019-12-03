@@ -2,9 +2,6 @@ package com.horanet.BarbeBLE;
 
 import java.util.UUID;
 
-/**
- * Created by itanbarpeled on 28/01/2018.
- */
 
 public class Constants {
 

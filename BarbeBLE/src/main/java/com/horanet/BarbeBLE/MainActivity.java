@@ -24,8 +24,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final int REQUEST_ENABLE_BT = 1;
     private static final int PERMISSION_REQUEST_COARSE_LOCATION = 2;
 
-
-    private Button mPeripheralButton;
     private Button mCentralButton;
 
     private BluetoothAdapter mBluetoothAdapter;
@@ -36,10 +34,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mPeripheralButton = (Button) findViewById(R.id.button_role_peripheral);
         mCentralButton = (Button) findViewById(R.id.button_role_central);
 
-        mPeripheralButton.setOnClickListener(this);
         mCentralButton.setOnClickListener(this);
 
         if (savedInstanceState == null) {
@@ -154,10 +150,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch(view.getId()) {
 
-            case R.id.button_role_peripheral:
-                intent = new Intent(this, PeripheralRoleActivity.class);
-                break;
-
             case R.id.button_role_central:
                 intent = new Intent(this, CentralRoleActivity.class);
                 break;
@@ -171,14 +163,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private void enableNavigation() {
-        mPeripheralButton.setEnabled(true);
         mCentralButton.setEnabled(true);
     }
 
 
     private void showErrorText(int string) {
-        Snackbar snackbar = Snackbar.make(mPeripheralButton, string, Snackbar.LENGTH_LONG);
-        snackbar.show();
     }
 
 }

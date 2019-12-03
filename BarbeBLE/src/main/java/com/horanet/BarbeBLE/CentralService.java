@@ -16,10 +16,6 @@ import android.os.IBinder;
 import android.util.Log;
 import java.util.List;
 
-/**
- * Created by itanbarpeled on 28/01/2018.
- */
-
 public class CentralService extends Service {
 
     private static final int STATE_DISCONNECTED = 0;
