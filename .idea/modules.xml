@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BarbeBLE/BarbeBLE.iml" filepath="$PROJECT_DIR$/BarbeBLE/BarbeBLE.iml" />
       <module fileurl="file://$PROJECT_DIR$/BarbleBLE.iml" filepath="$PROJECT_DIR$/BarbleBLE.iml" />
-      <module fileurl="file://$PROJECT_DIR$/BarbeBLE/app.iml" filepath="$PROJECT_DIR$/BarbeBLE/app.iml" />
     </modules>
   </component>
 </project>
