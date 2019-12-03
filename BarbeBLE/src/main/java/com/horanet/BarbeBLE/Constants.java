@@ -1,7 +1,4 @@
-package itan.com.bluetoothle;
-
-import android.bluetooth.BluetoothGattCharacteristic;
-import android.os.ParcelUuid;
+package com.horanet.BarbeBLE;
 
 import java.util.UUID;
 

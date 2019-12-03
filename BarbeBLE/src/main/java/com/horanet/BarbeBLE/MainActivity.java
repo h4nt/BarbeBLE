@@ -1,4 +1,4 @@
-package itan.com.bluetoothle;
+package com.horanet.BarbeBLE;
 
 import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
@@ -15,6 +15,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.horanet.BarbeBLE.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 

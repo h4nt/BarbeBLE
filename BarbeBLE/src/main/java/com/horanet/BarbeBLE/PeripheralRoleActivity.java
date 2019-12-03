@@ -1,4 +1,4 @@
-package itan.com.bluetoothle;
+package com.horanet.BarbeBLE;
 
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
@@ -20,10 +20,7 @@ import android.widget.Switch;
 import java.util.Arrays;
 import java.util.HashSet;
 
-import static itan.com.bluetoothle.Constants.BODY_SENSOR_LOCATION_CHARACTERISTIC_UUID;
-import static itan.com.bluetoothle.Constants.HEART_RATE_SERVICE_UUID;
-import static itan.com.bluetoothle.Constants.SERVER_MSG_FIRST_STATE;
-import static itan.com.bluetoothle.Constants.SERVER_MSG_SECOND_STATE;
+import com.horanet.BarbeBLE.R;
 
 
 /**
@@ -139,14 +136,14 @@ public class PeripheralRoleActivity extends BluetoothActivity implements View.On
     private void setBluetoothService() {
 
         // create the Service
-        mSampleService = new BluetoothGattService(HEART_RATE_SERVICE_UUID, BluetoothGattService.SERVICE_TYPE_PRIMARY);
+        mSampleService = new BluetoothGattService(Constants.HEART_RATE_SERVICE_UUID, BluetoothGattService.SERVICE_TYPE_PRIMARY);
 
         /*
         create the Characteristic.
         we need to grant to the Client permission to read (for when the user clicks the "Request Characteristic" button).
         no need for notify permission as this is an action the Server initiate.
          */
-        mSampleCharacteristic = new BluetoothGattCharacteristic(BODY_SENSOR_LOCATION_CHARACTERISTIC_UUID, BluetoothGattCharacteristic.PROPERTY_NOTIFY | BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ);
+        mSampleCharacteristic = new BluetoothGattCharacteristic(Constants.BODY_SENSOR_LOCATION_CHARACTERISTIC_UUID, BluetoothGattCharacteristic.PROPERTY_NOTIFY | BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ);
         setCharacteristic(); // set initial state
 
         // add the Characteristic to the Service
@@ -176,7 +173,7 @@ public class PeripheralRoleActivity extends BluetoothActivity implements View.On
         /*
         done each time the user changes a value of a Characteristic
          */
-        int value = checkedId == R.id.color_option_1 ? SERVER_MSG_FIRST_STATE : SERVER_MSG_SECOND_STATE;
+        int value = checkedId == R.id.color_option_1 ? Constants.SERVER_MSG_FIRST_STATE : Constants.SERVER_MSG_SECOND_STATE;
         mSampleCharacteristic.setValue(getValue(value));
     }
 

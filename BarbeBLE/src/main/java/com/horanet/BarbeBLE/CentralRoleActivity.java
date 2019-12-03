@@ -1,7 +1,6 @@
-package itan.com.bluetoothle;
+package com.horanet.BarbeBLE;
 
 import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothClass;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.le.BluetoothLeScanner;
 import android.bluetooth.le.ScanCallback;
@@ -17,11 +16,12 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import com.horanet.BarbeBLE.R;
 
 
 /**

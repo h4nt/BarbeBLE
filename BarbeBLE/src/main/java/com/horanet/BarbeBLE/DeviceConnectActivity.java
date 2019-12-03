@@ -1,4 +1,4 @@
-package itan.com.bluetoothle;
+package com.horanet.BarbeBLE;
 
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
@@ -19,11 +19,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
-import static itan.com.bluetoothle.Constants.BODY_SENSOR_LOCATION_CHARACTERISTIC_UUID;
-import static itan.com.bluetoothle.Constants.HEART_RATE_SERVICE_UUID;
-import static itan.com.bluetoothle.Constants.SERVER_MSG_FIRST_STATE;
-import static itan.com.bluetoothle.Constants.SERVER_MSG_SECOND_STATE;
 
+import com.horanet.BarbeBLE.R;
 
 
 public class DeviceConnectActivity extends BluetoothActivity implements View.OnClickListener {
@@ -237,9 +234,9 @@ public class DeviceConnectActivity extends BluetoothActivity implements View.OnC
                     /* check this characteristic belongs to the Service defined in
                     PeripheralAdvertiseService.buildAdvertiseData() method
                      */
-                    if (serviceCharacteristic.getService().getUuid().equals(HEART_RATE_SERVICE_UUID)) {
+                    if (serviceCharacteristic.getService().getUuid().equals(Constants.HEART_RATE_SERVICE_UUID)) {
 
-                        if (serviceCharacteristic.getUuid().equals(BODY_SENSOR_LOCATION_CHARACTERISTIC_UUID)) {
+                        if (serviceCharacteristic.getUuid().equals(Constants.BODY_SENSOR_LOCATION_CHARACTERISTIC_UUID)) {
                             characteristic = serviceCharacteristic;
                             mCharacteristic = characteristic;
                         }
@@ -306,11 +303,11 @@ public class DeviceConnectActivity extends BluetoothActivity implements View.OnC
         String color;
 
         switch (msg) {
-            case SERVER_MSG_FIRST_STATE:
+            case Constants.SERVER_MSG_FIRST_STATE:
                 color = "#AD1457";
                 break;
 
-            case SERVER_MSG_SECOND_STATE:
+            case Constants.SERVER_MSG_SECOND_STATE:
                 color = "#6A1B9A";
                 break;
 

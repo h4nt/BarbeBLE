@@ -1,4 +1,4 @@
-package itan.com.bluetoothle;
+package com.horanet.BarbeBLE;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
@@ -10,6 +10,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+
+import com.horanet.BarbeBLE.R;
 
 /**
  * Created by itanbarpeled on 28/01/2018.
